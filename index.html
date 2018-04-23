@@ -4,14 +4,15 @@
 <script type="text/javascript">
 function mouse_position()
 {
-    var e = window.event;
+	var e = window.event;
 
-    var posX = e.clientX;
-    var posY = e.clientY;
+	var posX = e.clientX;
+	var posY = e.clientY;
 
-    document.Form1.posx.value = posX;
-    document.Form1.posy.value = posY;
-
+	document.Form1.posx.value = posX;
+	document.Form1.posy.value = posY;
+	document.Form1.maxx.value = document.body.scrollWidth;
+	document.Form1.maxy.value = document.body.scrollHeight;
 }
 </script>
 
@@ -19,8 +20,8 @@ function mouse_position()
 
 <body onmousemove="mouse_position()">
 <form name="Form1">
-POSX: <input type="text" name="posx"><br>
-POSY: <input type="text" name="posy"><br>
+POSX: <input type="text" name="posx"/> MAXX: <input type="text" name="maxx"/><br>
+POSY: <input type="text" name="posy"/> MAXY: <input type="text" name="maxy"/><br>
 </form>
 </body>
 </html>
