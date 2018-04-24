@@ -2,6 +2,16 @@
 <head>
 <title> Track Mouse </title>
 <script type="text/javascript">
+if (localStorage.movement) var MouseMove = intArray(localStorage.movement);
+else 
+{
+	localStorage.movement=[];
+	var MouseMove =[];
+}
+function intArray(x)
+{
+return x.split(",");
+}
 function mouse_position()
 {
 	var e = window.event;
@@ -13,15 +23,26 @@ function mouse_position()
 	document.Form1.posy.value = posY;
 	document.Form1.maxx.value = document.body.scrollWidth;
 	document.Form1.maxy.value = document.body.scrollHeight;
+	document.Form1.mouselist.value = MouseMove.toString();
+	//localStorage.movement = MouseMove;		Should be elsewhere
 }
+function track()
+{
+	document.Form1.test.value+=1;
+	MouseMove[MouseMove.length]=document.Form1.posx.value;
+	MouseMove[MouseMove.length]=document.Form1.posy.value;
+	localStorage.movement = MouseMove;
+}
+
 </script>
 
 </head>
 
-<body onmousemove="mouse_position()">
+<body onclick="track()" onmousemove="mouse_position()">
 <form name="Form1">
 POSX: <input type="text" name="posx"/> MAXX: <input type="text" name="maxx"/><br>
 POSY: <input type="text" name="posy"/> MAXY: <input type="text" name="maxy"/><br>
+<input type="text" name="mouselist"/><input type="text" name="test"/>
 </form>
 </body>
 </html>
